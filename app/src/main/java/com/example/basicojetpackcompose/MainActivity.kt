@@ -21,6 +21,7 @@ import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -38,7 +39,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.codelab.basics.ui.theme.BasicsCodelabTheme
+import com.example.basicojetpackcompose.ui.theme.BasicoJetpackComposeTheme
 
 // inicia quando app for aberto
 class MainActivity : ComponentActivity() {
@@ -46,9 +47,9 @@ class MainActivity : ComponentActivity() {
         //definição do layout, diferente do uso do arquivo xml, chama funções de composição
         super.onCreate(savedInstanceState)
         setContent {
-            maneira de definir o estilo de composição
+            //maneira de definir o estilo de composição
             BasicoJetpackComposeTheme {
-                modificadores informam como serão dispostos, exibidos ou se comportarão no layout pai os elemento da IU
+                //modificadores informam como serão dispostos, exibidos ou se comportarão no layout pai os elemento da IU
                 MyApp(modifier = Modifier.fillMaxSize())
             }
         }
@@ -120,8 +121,9 @@ private fun Greetings(
 }
 
 // Função Greetings02
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun Greetings(name: String) {
+private fun Greeting(name: String) {
     Card(
         // mudando as cores dos cards
         colors = CardDefaults.cardColors(
@@ -141,7 +143,7 @@ private fun CardContent(name: String) {
     // expanded - armazenando um valor que indique se cada item está aberto ou não, estado do item
     // remember - protegendo contra a recomposição, para que o estado não seja redefinido
     // função mutableStateOf - adiciona um estado interno a uma composição, que faz com que o Compose recomponha funções que leiam esse State
-    val expanded by remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(false) }
 
     // Linha
     Row(
